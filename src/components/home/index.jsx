@@ -1,37 +1,40 @@
 import { useEffect, useState } from "react";
 
-const pokemons = []
 
 async function getPokemons() {
-    for(let i = 0; i < 10; i++) {
-        const randomNumber = Math.floor(Math.random() * 800)
-        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${randomNumber}`)
+    const pokemons = []
+
+    for (let i = 0; i < 10; i++) {
+        const randomNumber = Math.floor(Math.random() * 800);
+        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${randomNumber}`);
         const data = await response.json();
-    
+
         pokemons.push({
             name: data.name,
             image: data.sprites.other.dream_world.front_default
-        })
+        });
     }
     console.log(pokemons)
+    return pokemons;
 }
 
 const PokemonsList = () => {
-    const [pokemons, setPokemons] = useState([])
+    const [pokemons, setPokemons] = useState([]);
 
     useEffect(() => {
         async function fetchData() {
-            const pokemons = await getPokemons()
-            setPokemons(pokemons)
+            const pokemonsData = await getPokemons()
+            setPokemons(pokemonsData)
         }
-        fetchData()
-    }, [])
+        fetchData();
+    }, []);
 
     return (
         <>
-            {pokemons.map((pokemons, index) => 
+            {pokemons.map((pokemon, index) =>
                 <div key={index}>
-                    <img src={pokemons} alt="pokemon" />
+                    <img src={pokemon.image} alt={pokemon.name} />
+                    <p>{pokemon.name}</p>
                 </div>
             )}
         </>

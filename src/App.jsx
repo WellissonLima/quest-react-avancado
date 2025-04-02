@@ -2,8 +2,7 @@
 import './App.css'
 import { AppRoutes } from './routes/routes'
 
-function App() {
-  
+function App() {  
 
   return (
     <>
