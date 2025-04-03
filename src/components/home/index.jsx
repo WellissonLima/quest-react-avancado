@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import styled from "styled-components";
 
 
 async function getPokemons() {
@@ -31,14 +32,31 @@ const PokemonsList = () => {
 
     return (
         <>
-            {pokemons.map((pokemon, index) =>
-                <div key={index}>
-                    <img src={pokemon.image} alt={pokemon.name} />
-                    <p>{pokemon.name}</p>
-                </div>
-            )}
+            <Section>
+                {pokemons.map((pokemon, index) =>
+                    <div key={index}>
+                        <Img src={pokemon.image} alt={pokemon.name} />
+                        <p>{pokemon.name}</p>
+                    </div>
+                )}
+            </Section>
         </>
     )
 }
+
+const Section = styled.section`
+    margin: 100px;
+    background-color: rgba(250, 247, 247, 0.5);
+    border-radius: 25px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+`
+
+const Img = styled.img`
+    width: 90px;
+    hight: 120px;
+    margin: 20px;
+`
 
 export { PokemonsList }
