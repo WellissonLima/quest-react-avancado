@@ -1,34 +1,12 @@
-import { useEffect, useState } from "react";
+import { useFetchPokemons } from "../../hooks/useFetchPokemons";
 import styled from "styled-components";
 
 
-async function getPokemons() {
-    const pokemons = []
-
-    for (let i = 0; i < 10; i++) {
-        const randomNumber = Math.floor(Math.random() * 800);
-        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${randomNumber}`);
-        const data = await response.json();
-
-        pokemons.push({
-            name: data.name,
-            image: data.sprites.other.dream_world.front_default
-        });
-    }
-    console.log(pokemons)
-    return pokemons;
-}
-
 const PokemonsList = () => {
-    const [pokemons, setPokemons] = useState([]);
+    const { pokemons, loading, error } = useFetchPokemons(10);
 
-    useEffect(() => {
-        async function fetchData() {
-            const pokemonsData = await getPokemons()
-            setPokemons(pokemonsData)
-        }
-        fetchData();
-    }, []);
+    if (loading) return <p>Carregando Pokémons...</p>;
+    if (error) return <p>Erro: {error}</p>;
 
     return (
         <>
