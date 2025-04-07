@@ -1,8 +1,8 @@
 import { useFetchPokemons } from "../../hooks/useFetchPokemons";
 import styled from "styled-components";
 
-const Section = styled.section`
-    display: flex;
+const CardsContainer = styled.section`
+  display: flex;
   flex-wrap: wrap;
   justify-content: center;
   padding: 16px;
@@ -52,14 +52,14 @@ const PokemonsList = () => {
 
     return (
         <>
-            <Section>
+            <CardsContainer>
                 {pokemons.map((pokemon, index) =>
                     <PokemonCard key={index}>
                         <img src={pokemon.image} alt={pokemon.name} />
                         <p>{pokemon.name}</p>
                     </PokemonCard>
                 )}
-            </Section>
+            </CardsContainer>
         </>
     )
 }
