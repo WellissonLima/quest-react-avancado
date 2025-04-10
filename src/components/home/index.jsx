@@ -41,6 +41,14 @@ const PokemonCard = styled.div`
     text-transform: capitalize;
     color: #333;
   }
+
+  @media (max-width: 768px) {
+    width: 45%;
+  }
+
+  @media (max-width: 480px) {
+    width: 100%;
+  }
 `;
 
 
