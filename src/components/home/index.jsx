@@ -1,5 +1,6 @@
 import { useFetchPokemons } from "../../hooks/useFetchPokemons";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const CardsContainer = styled.section`
   display: flex;
@@ -62,10 +63,12 @@ const PokemonsList = () => {
         <>
             <CardsContainer>
                 {pokemons.map((pokemon, index) =>
-                    <PokemonCard key={index}>
+                  <Link key={index} to={`/pokemon/${pokemon.name}`}>
+                    <PokemonCard>
                         <img src={pokemon.image} alt={pokemon.name} />
                         <p>{pokemon.name}</p>
                     </PokemonCard>
+                  </Link>
                 )}
             </CardsContainer>
         </>

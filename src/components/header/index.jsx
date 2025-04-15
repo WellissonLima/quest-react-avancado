@@ -21,20 +21,6 @@ const Header = () => {
         <>
             <HeaderContainer>
                 <img src="../src/assets/pokedex-logo.png" alt="" />
-
-                {loading && <p>Carregando tipos...</p>}
-                {error && <p>{error}</p>}
-
-                {!loading && !error && (
-                    <select value={selectedType} onChange={e => onTypeChange(e.target.value)}>
-                        <option value="">Todos os Tipos</option>
-                        {types.map(type => (
-                            <option key={type} value={type}>
-                                {type}
-                            </option>
-                        ))}
-                    </select>
-                )}
             </HeaderContainer>
         </>
     )
