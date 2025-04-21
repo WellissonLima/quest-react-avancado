@@ -12,7 +12,28 @@ export const usePokemonDetails = (name) => {
                 if (!response.ok) throw new Error("Erro ao buscar detalhes do Pokémon");
 
                 const data = await response.json();
-                setPokemon(data);
+
+                // Buscar descrição das habilidades
+                const abilitiesWithDescriptions = await Promise.all(
+                    data.abilities.map(async ({ ability }) => {
+                        const res = await fetch(ability.url);
+                        const abilityData = await res.json();
+
+                        const effectEntry = abilityData.effect_entries.find(e => e.language.name === "en");
+                        return {
+                            name: ability.name,
+                            description: effectEntry ? effectEntry.short_effect : "Descrição indisponível"
+                        };
+                    })
+                );
+
+                setPokemon({
+                    name: data.name,
+                    image: data.sprites.other.dream_world.front_default,
+                    movies: data.movies.map(m => m.move.name),
+                    types: data.type.map(t => t.type.name),
+                    abilities: abilitiesWithDescriptions,
+                });
             } catch (err) {
                 setError(err.message);
             } finally {
