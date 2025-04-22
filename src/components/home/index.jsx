@@ -1,4 +1,4 @@
-import { useFetchPokemons } from "../../hooks/useFetchPokemons";
+// import { useFetchPokemons } from "../../hooks/useFetchPokemons";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
@@ -53,26 +53,25 @@ const PokemonCard = styled.div`
 `;
 
 
-const PokemonsList = () => {
-    const { pokemons, loading, error } = useFetchPokemons(10);
+//const PokemonsList = () => {
+//    const { pokemons, loading, error } = useFetchPokemons(10);
+//
+//    
+const Home = ({ pokemons }) => {
+  return (
+    <>
+      <CardsContainer>
+        {pokemons.map((pokemon, index) =>
+          <Link key={index} to={`/pokemon/${pokemon.name}`}>
+            <PokemonCard>
+              <img src={pokemon.image} alt={pokemon.name} />
+              <p>{pokemon.name}</p>
+            </PokemonCard>
+          </Link>
+        )}
+      </CardsContainer>
+    </>
+  );
+};
 
-    if (loading) return <p>Carregando Pokémons...</p>;
-    if (error) return <p>Erro: {error}</p>;
-
-    return (
-        <>
-            <CardsContainer>
-                {pokemons.map((pokemon, index) =>
-                  <Link key={index} to={`/pokemon/${pokemon.name}`}>
-                    <PokemonCard>
-                        <img src={pokemon.image} alt={pokemon.name} />
-                        <p>{pokemon.name}</p>
-                    </PokemonCard>
-                  </Link>
-                )}
-            </CardsContainer>
-        </>
-    )
-}
-
-export { PokemonsList }
+export default Home
