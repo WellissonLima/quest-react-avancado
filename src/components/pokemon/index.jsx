@@ -18,7 +18,7 @@ const PokemonDetails = ({ pokemon, loading, error }) => {
             <Section>
                 <h2>Tipo(s)</h2>
                 <ul>
-                    {pokemon.types.map((types, index) => (
+                    {pokemon.types.map((type, index) => (
                         <li key={index}>{type}</li>
                     ))}
                 </ul>

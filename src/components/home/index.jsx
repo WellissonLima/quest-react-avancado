@@ -1,4 +1,3 @@
-// import { useFetchPokemons } from "../../hooks/useFetchPokemons";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
