@@ -1,14 +1,7 @@
-import { useParams } from "react-router-dom";
-import { usePokemonDetails } from "../hooks/usePokemonDetails";
-import { PokemonDetails } from "../components/pokemon";
+import PokemonDetailsContainer from "../containers/PokemonDetailsContainer";
 
 const DetailsPage = () => {
-    const { name } = useParams();
-    const { pokemon, loading, error } = usePokemonDetails(name);
-
-    return (
-        <PokemonDetails pokemon={pokemon} loading={loading} error={error} />
-    );
+    return <PokemonDetailsContainer />;
 };
 
 export default DetailsPage;

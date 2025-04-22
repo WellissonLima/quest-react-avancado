@@ -52,11 +52,6 @@ const PokemonCard = styled.div`
   }
 `;
 
-
-//const PokemonsList = () => {
-//    const { pokemons, loading, error } = useFetchPokemons(10);
-//
-//    
 const Home = ({ pokemons }) => {
   return (
     <>
