@@ -16,7 +16,7 @@ export const useFetchPokemons = (count = 10) => {
                     if (!response.ok) throw new Error("Erro ao buscar Pokémon");
 
                     const data = await response.json();
-                    console.log(data);
+                    //console.log(data);
                     const image = data.sprites?.other?.dream_world?.front_default;
 
                     if (image) {
