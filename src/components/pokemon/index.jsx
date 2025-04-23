@@ -13,13 +13,14 @@ const PokemonDetails = ({ pokemon, loading, error }) => {
 
     return (
         <Container>
+            <Image src={pokemon.image || "https://via.placeholder.com/150"} alt={pokemon.name} />
             <Title>{pokemon.name}</Title>
-            <Image src={pokemon.image} alt={pokemon.name} />
+
             <Section>
                 <h2>Tipo(s)</h2>
                 <ul>
-                    {pokemon.types.map((type, index) => (
-                        <li key={index}>{type}</li>
+                    {pokemon.types?.map((type) => (
+                        <li key={type}>{type}</li>
                     ))}
                 </ul>
             </Section>
@@ -27,8 +28,8 @@ const PokemonDetails = ({ pokemon, loading, error }) => {
             <Section>
                 <h2>Habilidades</h2>
                 <ul>
-                    {pokemon.abilities.map((ability, index) => (
-                        <li key={index}>
+                    {pokemon.abilities.map((ability) => (
+                        <li key={ability.name}>
                             <strong>{ability.name}</strong>: {ability.description}
                         </li>
                     ))}
@@ -37,11 +38,13 @@ const PokemonDetails = ({ pokemon, loading, error }) => {
 
             <Section>
                 <h2>Movimentos</h2>
-                <MovesList>
-                    {pokemon.moves.slice(0, 20).map((move, index) => (
-                        <li key={index}>{move}</li>
-                    ))}
-                </MovesList>
+                {pokemon.moves && (
+                    <MovesList>
+                        {pokemon.moves.slice(0, 10).map((moveObj, index) => (
+                            <li key={index}>{moveObj.move.name}</li>
+                        ))}
+                    </MovesList>
+                )}
             </Section>
         </Container>
     );
