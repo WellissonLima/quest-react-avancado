@@ -1,30 +1,31 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 export const useFetchPokemons = () => {
-    const [pokemons, setPokemons] = useState(null);
+    const [pokemons, setPokemons] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [offset, setOffset] = useState(0);
     const limit = 10;
 
-
+    const hasFetched = useRef(false);
 
     const fetchPokemons = async (currentOffset = 0) => {
         setLoading(true);
 
         try {
-            //const pokemonsList = [];
 
 
-            const response = await fetch(`https://pokeapi.co/api/v2/pokemon?offset=${currentOffset}&limit${limit}`);
+            const response = await fetch(`https://pokeapi.co/api/v2/pokemon?offset=${currentOffset}&limit=${limit}`);
             if (!response.ok) throw new Error("Erro ao buscar Pokémon");
 
             const data = await response.json();
 
+            console.log(data)
+
             const detailsPromises = data.results.map(async (pokemon) => {
                 const res = await fetch(pokemon.url);
                 const details = await res.json();
-                const image = data.sprites?.other?.dream_world?.front_default;
+                const image = details.sprites?.other?.dream_world?.front_default;
                 return {
                     name: details.name,
                     image
@@ -42,7 +43,10 @@ export const useFetchPokemons = () => {
     };
 
     useEffect(() => {
-        fetchPokemons();
+        if (!hasFetched.current) {
+            hasFetched.current = true;
+            fetchPokemons();
+        }
     }, []);
 
     const loadMorePokemons = () => fetchPokemons(offset);
