@@ -34,7 +34,7 @@ export const usePokemonDetails = (name) => {
                 setPokemon({
                     name: data.name,
                     image: data.sprites.other.dream_world.front_default,
-                    movies: data.moves.map(m => m.move.name),
+                    moves: data.moves.map(m => m.move.name),
                     types: data.types.map(t => t.type.name),
                     abilities: abilitiesWithDescriptions,
                 });

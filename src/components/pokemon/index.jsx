@@ -40,8 +40,8 @@ const PokemonDetails = ({ pokemon, loading, error }) => {
                 <h2>Movimentos</h2>
                 {pokemon.moves && (
                     <MovesList>
-                        {pokemon.moves.slice(0, 10).map((moveObj, index) => (
-                            <li key={index}>{moveObj.move.name}</li>
+                        {pokemon.moves.slice(0, 10).map((move, index) => (
+                            <li key={index}>{move}</li>
                         ))}
                     </MovesList>
                 )}
