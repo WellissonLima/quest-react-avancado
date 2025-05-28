@@ -7,6 +7,7 @@ import {
     LeftColumn,
     RightColumn,
 } from "./PokemonDetails.styles";
+import { Link } from "react-router-dom";
 
 const PokemonDetails = ({ pokemon, loading, error }) => {
     if (loading) return <p>Carregando...</p>;
@@ -15,6 +16,7 @@ const PokemonDetails = ({ pokemon, loading, error }) => {
 
     return (
         <Container>
+            <Link to='/'>Home</Link>
             <LeftColumn>
                 <Image src={pokemon.image || "https://via.placeholder.com/150"} alt={pokemon.name} />
                 <Title>{pokemon.name}</Title>
