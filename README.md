@@ -76,7 +76,7 @@ npm run dev
 ## 🤝 Contato
 
 Desenvolvido por **Wellisson Lima**  
-🔗 [LinkedIn](https://www.linkedin.com/in/wellissonlima/)  
-📫 [wellisson.lima@outlook.com](mailto:wellisson.lima@outlook.com)
+🔗 [LinkedIn](https://www.linkedin.com/in/wellissonboanergesbarroslima/)  
+📫 [wellissonboanerges@gmail.com](mailto:wellissonboanerges@gmail.com)
 
 ---
