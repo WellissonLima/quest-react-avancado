@@ -16,7 +16,7 @@ function App() {
 
 const GlobalStyle = createGlobalStyle`
   body {
-    background-image: url("../src/assets/pokemons-wpp.jpg");
+    background-image: url("/pokemons-wpp.jpg");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
